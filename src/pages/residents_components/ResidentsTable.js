@@ -1,5 +1,7 @@
 import { Card, Col, Row, Table } from "react-bootstrap";
 import { FaEye, FaPen, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ResidentDetails from "./ResidentDetails";
 
 
 const ResidentsTable = (props) => {
@@ -28,7 +30,7 @@ const ResidentsTable = (props) => {
                                 <td>1234 Main St</td>
                                 <td className="text-center">
                                     <Row>
-                                        <Col><button className="btn btn-success sm"><FaEye/></button></Col>
+                                        <Col><Link className="btn btn-success" to={'/resident/details'}><FaEye/></Link></Col>
                                         <Col><button className="btn btn-warning"><FaPen/></button></Col>
                                         <Col><button className="btn btn-danger"><FaTrash/></button></Col>
                                     </Row>

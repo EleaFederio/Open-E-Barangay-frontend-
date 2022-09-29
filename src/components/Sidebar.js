@@ -182,7 +182,13 @@ const Sidebar = ({children}) => {
                     </Navbar>
                 ) : ""
             }
+
+            {/* *********************************************************** */}
+            {/* ************* THIS IS THE MAIN CONTENT OF THE APP ********* */}
+            {/* *********************************************************** */}
             {children}
+
+
             {console.log(children.props)}
         </main>
     </div>
