@@ -1,7 +1,8 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import { useState } from 'react';
 import { Container, Navbar } from 'react-bootstrap';
-import {FaHome, FaTools, FaInfoCircle, FaBars, FaSearch, FaPersonBooth, FaList, FaAngleDown} from 'react-icons/fa';
+import {FaHome, FaInfoCircle, FaBars, FaSearch, FaList, FaNewspaper, FaHammer, FaTools} from 'react-icons/fa';
+import { BsPersonCircle, BsFillPeopleFill, BsPencilSquare } from "react-icons/bs";
 import { NavLink, useLocation } from 'react-router-dom';
 import SidebarMenu from './SidebarMenu';
 const routes = [
@@ -11,26 +12,41 @@ const routes = [
         icon: <FaHome/>
     },
     {
+        path: '/residents',
+        name: 'Residents',
+        icon: <BsFillPeopleFill/>
+    },
+    {
+        path: '/certificate',
+        name: 'Certificates',
+        icon: <FaNewspaper/>,
+        subRoutes:[
+            {
+                path: '/certificate/generate',
+                name: 'Generate',
+                icon: <BsPencilSquare/>
+            },
+            {
+                path: '/certificate/list',
+                name: 'List',
+                icon: <FaList/>
+            }
+        ]
+    },
+    {
+        path: '/blotter',
+        name: 'Blotter',
+        icon: <FaHammer/>
+    },
+    {
         path: '/settings',
         name: 'Settings',
         icon: <FaTools/>
     },
     {
-        path: '/settings',
-        name: 'Sub Menu',
-        icon: <FaTools/>,
-        subRoutes:[
-            {
-                path: '/settings/profile',
-                name: 'Profile',
-                icon: <FaPersonBooth/>
-            },
-            {
-                path: '/settings/sub-menu',
-                name: 'Sub Menu',
-                icon: <FaList/>
-            }
-        ]
+        path: '/account',
+        name: 'My Account',
+        icon: <BsPersonCircle/>
     },
     {
         path: '/about',
@@ -160,8 +176,8 @@ const Sidebar = ({children}) => {
                 children !== "Not Found" ? 
                 (
                     <Navbar bg="light" >
-                        <Container>
-                            <Navbar.Brand>{location.pathname === '/' ? 'home' : location.pathname}</Navbar.Brand>
+                        <Container fluid>
+                            <Navbar.Brand><b>{location.pathname === '/' ? 'home' : location.pathname}</b></Navbar.Brand>
                         </Container>
                     </Navbar>
                 ) : ""
